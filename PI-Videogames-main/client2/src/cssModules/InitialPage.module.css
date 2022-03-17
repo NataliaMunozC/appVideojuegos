@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: content-box;
+   /*  background-image: url('https://i.pinimg.com/564x/4a/16/b8/4a16b8b95fe76b12a5d5c570b087e43a.jpg'); */
+} 
+
+.link{
+    box-sizing: content-box;
+    width: 500px;
+    
+    height: 100px;
+}
+   
+
+body {
+    
+    background-image: url('https://i.pinimg.com/564x/cd/73/ee/cd73ee52313e6c366491b9988c28534b.jpg');
+    font-family: 'Press Start 2P', cursive;
+
+          
+}  
+
+nav{
+    display: flex;
+    justify-content: center;
+    
+    
+}
+ .button{
+
+   margin-top: 200px;
+    width: 500px;
+    height: 100px;
+    text-align: center;
+    font-size:xx-large;
+    font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+    
+    
+
+} 
+.button:hover{
+    background-color:rgb(31, 131, 27);
+    color: azure;
+}

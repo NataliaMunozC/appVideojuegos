@@ -1,0 +1,20 @@
+input{
+    background-color:azure;
+      width: 200px;
+      height: 30px;
+      margin-top:20px;
+    
+  }
+  button{
+      background-color:black;
+      color:white;
+      width: 200px;
+      height: 30px;
+      font-family: 'Press Start 2P', cursive;
+      font-size: smaller;
+      
+   
+  }
+  button:hover{
+    background-color:rgb(22, 34, 88);
+  }
