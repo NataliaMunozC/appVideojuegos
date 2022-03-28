@@ -14,12 +14,13 @@ export const ORDERED_GAMES='ORDERED_GAMES';
 export const GAMES_NAME='GAMES_BY_NAME';
 export const SET_MATCHES='SET_MATCHES';
 export const DELETE_GAME='DELETE_GAME';
+export const RESET_FILTERS='RESET_FILTERS';
 
 
  export const getGames = () => async (dispatch) => {
     let json= await axios.get (`http://localhost:3002/videogames`)
 
-console.log("dispatch getgames");
+   console.log("dispatch getgames",json.data);
     return dispatch({ type: GET_GAMES, payload:json.data})
 };
 
@@ -44,12 +45,17 @@ export const getGamesByName = (name) => async (dispatch) => {
         return({ type: SET_MATCHES})
     }; 
 
+export const resetFilters = () => {
+    
+        return({ type: RESET_FILTERS})
+    };   
+
 export const getPlatforms = () => async (dispatch) => {
     let json= await axios.get (`http://localhost:3002/videogames`)
     const platforms= json.data.map(e=>e.platforms).flat();
     const setPlatforms= new Set(platforms);
         
-console.log(...setPlatforms);
+
 
     return dispatch({ type: GET_PLATFORMS, payload:[...setPlatforms]})
 };

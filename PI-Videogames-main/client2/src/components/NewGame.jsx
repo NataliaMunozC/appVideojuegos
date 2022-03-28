@@ -51,8 +51,10 @@ export default function NewGame(){
 
     const handleCheck = e => {
 
-        if(e.target.checked){
+        if (!input[e.target.name].includes(e.target.value) && e.target.checked){
             setInput((prevState)=>{
+                console.log(e.target.name, e.target.checked);
+
             const newState= {
             ...prevState,
             [e.target.name]: [...input[e.target.name], e.target.value]
@@ -61,6 +63,24 @@ export default function NewGame(){
             return newState;
               });
             }
+            // if input was previously checked and then  is unchecked, is  deleted from the array
+         else if(input[e.target.name].includes(e.target.value) && !e.target.checked) {
+             console.log(e.target.value)
+            setInput((prevState)=>{
+                console.log(e.target.value, e.target.checked);
+
+            const newState= {
+            ...prevState,
+            [e.target.name]: [...input[e.target.name]].filter(g=>g!==e.target.value)
+            
+            } 
+            setErrors(validate(newState));
+           
+    
+            return newState;
+              });
+
+         }   
             console.log(input);
         }        
     
@@ -169,7 +189,7 @@ export default function NewGame(){
 
              return ( 
                 <label key={e.id} >
-                 <input  className={styles.check} key={e.id} type="checkbox" id="first"  name="genres"   value={e.name} onChange={e => handleCheck(e)}  checked={input.genres.includes(e.name)} />
+                 <input  className={styles.check} key={e.id} type="checkbox" id="first"  name="genres"   value={e.name} onChange={e => handleCheck(e)} />
                  {e.name}
                  </label>);
                  }
@@ -190,7 +210,7 @@ export default function NewGame(){
 
              return ( 
               <label key={e.toString()} >
-                 <input  className={styles.check}  key={e.toString()} type="checkbox" id="first" value={e} name="platforms" onChange={e => handleCheck(e)}  checked={input.platforms.includes(e)} />
+                 <input  className={styles.check}  key={e.toString()} type="checkbox" id="first" value={e} name="platforms" onChange={e => handleCheck(e)}  />
                 {e}
                  </label>)
                  }

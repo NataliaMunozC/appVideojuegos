@@ -1,40 +1,32 @@
-const axios =require('axios');
+
 const { Router } = require('express');
 const {Videogame, Genre}=require ('../db');
-//const Genre = require('../models/Genre');
-const { totalInfo, getDetailsGame, getPlatforms } = require('./functions');
-const functions =require ('./functions');
-const API_KEY = '51073f1a55f24f6b929cb21de0ff3534';
+const { totalInfo, getDetailsGame,totalGamesByname } = require('./functions');
 
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
+
 
 
 const router = Router();
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
 router
         .get ('/', async(req,res,next)=>{
 
-
             try{
-           
             let {name}=req.query;
-            if(name){
-              
-             let gameName= await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)
-            gameName 
-                    ?res.status(200).send(gameName.data.results.slice(0,14))
-                    : res.status(404).send('Game not Found :(')
-
+            if(name){  
+             let gamesByName= await  totalGamesByname(name);
+             gamesByName
+             ?res.status(200).send(gamesByName)
+             : res.status(404).send('Game not Found :(')
+               
             }else{ let totalGames= await totalInfo();
 
                 let map= totalGames?.map((g)=>{
                     const {background_image, name, genres,rating,id,platforms,created, description, image}=g;
                     return {
                         id,
-                        background_image:String(id).length>10?image:background_image,
+                        background_image:String(id).length<10?background_image:"",
+                        image:String(id).length>10?image:"",
                         name,
                         genres,
                         rating,
@@ -44,7 +36,7 @@ router
                     }
                 })
             
-                    res.status(200).send(map); 
+                res.status(200).send(map); 
             
             }
             }catch(e){
@@ -79,8 +71,6 @@ router
 
         .post ('/', async(req, res) =>{
             const {name, description, released,rating, platforms, created, genres, image}= req.body;
-            
-    
             let newGame = await Videogame.create({
                 
                 name, 
@@ -93,8 +83,10 @@ router
                 genres,
               
             })
+            console.log(newGame);
             let genreDb= await Genre.findAll({where:{name:genres}})
-            newGame.addGenre(genreDb); 
+            console.log(genreDb);
+            newGame.addGenre(genreDb);  
             res.send("Game created successfully :)")
 
         })
@@ -111,10 +103,5 @@ router
                 res.send(e);
             }
         });
-        
-        
-
-
-
 
 module.exports = router;
