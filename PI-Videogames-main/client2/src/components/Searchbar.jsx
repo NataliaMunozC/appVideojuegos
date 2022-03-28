@@ -1,4 +1,4 @@
-import  React, { useState, } from "react";
+import  React, { useState, useRef } from "react";
 import {useDispatch, useSelector } from "react-redux";
 import { getGamesByName, setMatches } from "../actions";
 import style from '../cssModules/Searchbar.module.css'
@@ -6,7 +6,7 @@ import style from '../cssModules/Searchbar.module.css'
 
 
 export default function Searchbar (){
-   /*  const [ loading, setLoading ] = useState(true); */
+    const search = useRef();
 
     const [input, setInput]= useState("");
 
@@ -24,7 +24,8 @@ export default function Searchbar (){
         if (input !==""){
             dispatch(getGamesByName(input));
         
-        }else{alert ('a name is required')}
+        }else{alert ('a name is required')};
+        setTimeout(()=>search.current.value="",1500);
              
            
           
@@ -32,7 +33,6 @@ export default function Searchbar (){
 
 
     let match=useSelector(state=>state.matchFound);
-    //console.log(match);
     if(!match) alert ('No matches found');
     dispatch(setMatches());
    
@@ -42,7 +42,7 @@ export default function Searchbar (){
           <div >
 
             
-              <input style={style.input} type="text"  placeholder="Game name..." onChange={e => handleChange(e)}/>
+              <input style={style.input} ref={search} type="text"  placeholder="Game name..." onChange={e => handleChange(e)}/>
               <button style={style.button} type ='submit' onClick={e=>handleClick(e)}>Search games by name</button>
            
          </div>
