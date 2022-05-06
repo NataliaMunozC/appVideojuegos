@@ -2,6 +2,7 @@ import  React, { useState, useRef } from "react";
 import {useDispatch, useSelector } from "react-redux";
 import { getGamesByName, setMatches } from "../actions";
 import style from '../cssModules/Searchbar.module.css'
+import Swal from 'sweetalert2'
 //import gif from '../assets/loading.gif'
 
 
@@ -24,16 +25,23 @@ export default function Searchbar (){
         if (input !==""){
             dispatch(getGamesByName(input));
         
-        }else{alert ('a name is required')};
+        }else{Swal.fire({
+        
+            text: 'A name is required!',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          })};
         setTimeout(()=>search.current.value="",1500);
-             
-           
-          
+                  
     }
 
 
     let match=useSelector(state=>state.matchFound);
-    if(!match) alert ('No matches found');
+    if(!match) {Swal.fire({
+        text: 'No matches found!',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      })}
     dispatch(setMatches());
    
     return(

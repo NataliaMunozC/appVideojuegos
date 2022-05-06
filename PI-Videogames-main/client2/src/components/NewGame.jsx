@@ -3,6 +3,7 @@
  import { Link, useHistory } from "react-router-dom";
 import { createGame, getGenres, getPlatforms } from "../actions"; 
 import styles from '../cssModules/NewGame.module.css'
+import Swal from 'sweetalert2'
 
 
 
@@ -90,7 +91,13 @@ export default function NewGame(){
       e.preventDefault();
        
         dispatch(createGame(input));
-        alert ("Game created succesfully!");
+        Swal.fire({
+            position: 'top',
+            icon: 'success',
+            title: 'Game created Succesfully!',
+            showConfirmButton: false,
+            timer: 1500
+          })
       setInput({
         name:"",
         description:"",
@@ -236,6 +243,3 @@ export default function NewGame(){
     )
 
 }
-
-
-//export default connect(null, {createGame})(NewGame);

@@ -80,7 +80,7 @@ router
                 rating, 
                 platforms,
                 created,
-                genres,
+                //genres,
               
             })
             console.log(newGame);
