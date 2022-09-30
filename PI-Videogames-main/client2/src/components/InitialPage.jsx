@@ -15,14 +15,14 @@ export default function InitialPage() {
 },[]);
   return (
    <React.Fragment>
-    <nav className={styles.container}>
+    <div className={styles.container}>
       <Link className={styles.link} to ='/home'>
         <button  className={styles.button}>Welcome to VGApp: 
           <br /> Let´s start!
         
         </button>
       </Link>
-    </nav>
+    </div>
     </React.Fragment>  
     
   

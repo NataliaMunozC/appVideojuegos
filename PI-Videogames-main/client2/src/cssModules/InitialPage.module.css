@@ -1,16 +1,14 @@
 .container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
     align-items: center;
-    box-sizing: content-box;
-   /*  background-image: url('https://i.pinimg.com/564x/4a/16/b8/4a16b8b95fe76b12a5d5c570b087e43a.jpg'); */
+
 } 
 
 .link{
     box-sizing: content-box;
     width: 500px;
-    
-    height: 100px;
 }
    
 
@@ -22,21 +20,14 @@ body {
           
 }  
 
-nav{
-    display: flex;
-    justify-content: center;
-    
-    
-}
  .button{
-
-   margin-top: 200px;
     width: 500px;
-    height: 100px;
+    height: 150px;
     text-align: center;
     font-size:xx-large;
     font-weight: bold;
     font-family: 'Press Start 2P', cursive;
+    border-radius: 20px;
     
     
 
