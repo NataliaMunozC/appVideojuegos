@@ -20,7 +20,7 @@ router
              : res.status(404).send('Game not Found :(')
                
             }else{ let totalGames= await totalInfo();
-
+                console.log(totalGames);
                 let map= totalGames?.map((g)=>{
                     const {background_image, name, genres,rating,id,platforms,created, description, image}=g;
                     return {
@@ -35,7 +35,7 @@ router
                         description
                     }
                 })
-            
+                
                 res.status(200).send(map); 
             
             }

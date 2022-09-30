@@ -1,15 +1,13 @@
 .container {
     display: flex;
-    
     flex-direction: column;
     justify-content: center;
     flex-wrap: wrap;
     margin: 10px;
     border-radius: 5px; 
-    width: 250px;
+    min-width: 300px;
+    min-height: 550px;
     background: rgba(241, 245, 243, 0.952);
- /*  background: rgba(0, 3, 2, 0.952);
-   */
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     padding: 5px;
@@ -18,9 +16,10 @@
     transition: all .3s ease;
 }
 .img{
-    max-width: 250px;
-    max-height: 350px;
-    border-radius: 20px;
+    display: flex;
+    border-radius: 5px;
+    margin: auto;
+    margin-bottom: 15px;
 }
 
 .link{
@@ -28,6 +27,12 @@
     color: #000;
 }
 
+.title{
+    text-align: center;
+    width: 250px;
+    margin: auto;
+    margin-bottom: 17px;
+}
 
 .text{
     margin-top: 10px;
@@ -41,6 +46,15 @@
 .g{
     display: block;
     font-size: smaller;
+}
+.info{
+    display: flex;
+    justify-content: center;
+    gap:20px;
+}
+.rating{
+    display: flex;
+    flex-direction: column;
 }
 
 .genreslist{

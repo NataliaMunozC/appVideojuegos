@@ -9,7 +9,7 @@ import gif from '../assets/giphy.jpg'
 
 
 export default function Details (){
-  const defImage='https://images.unsplash.com/photo-1627856013091-fed6e4e30025?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmlkZW8lMjBnYW1lc3xlbnwwfHwwfHw%3D&w=1000&q=80'
+  const defImage='https://images.unsplash.com/photo-1627856013091-fed6e4e30015?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmlkZW8lMjBnYW1lc3xlbnwwfHwwfHw%3D&w=1000&q=80'
     const [ loading, setLoading ] = useState(true);
     const dispatch=useDispatch();
     let {id}=useParams();
