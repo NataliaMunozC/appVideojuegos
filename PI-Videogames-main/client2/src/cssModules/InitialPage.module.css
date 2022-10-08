@@ -35,4 +35,5 @@ body {
 .button:hover{
     background-color:rgb(31, 131, 27);
     color: azure;
+    border:rgb(31, 131, 27);;
 }
